@@ -22,14 +22,19 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+      
+      - name: Install wails
+        run: |
+          go install github.com/wailsapp/wails/v2/cmd/wails@latest
           
           
       - name: Install frontend dependencies
         run: |
           wails build -f --platform windows/amd64 --output dist/app.exe
           
-          
-      - name: create_release
+     
+
+      - name: Create the release 
         id: create_release
         uses: softprops/action-gh-release@v1
         with:
