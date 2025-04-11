@@ -1,2 +1,24 @@
-# node modules inside frontend dir
-./frontend/node_modules/*
+# Binaries for programs and plugins
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Build directories
+build/
+dist/
+
+# Wails specific
+frontend/dist/
+frontend/node_modules/
+
+# Logs
+*.log
+
+# Dependency directories
+node_modules/
+vendor/
+
+# OS generated files
+.DS_Store
+Thumbs.db
