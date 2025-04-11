@@ -1,6 +1,7 @@
 # Build outputs
 /bin/
 /build/
+!/build/appicon.png
 *.exe
 *.dll
 *.so
