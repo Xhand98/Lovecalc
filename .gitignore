@@ -32,7 +32,6 @@ desktop.ini
 *.test
 *.mod
 *.sum
-*.exe
 
 # TypeScript specific
 *.tsbuildinfo
