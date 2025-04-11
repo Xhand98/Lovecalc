@@ -9,10 +9,7 @@ on:
 
 jobs:
   build:
-    strategy:
-      matrix:
-        os: [windows-latest, macos-latest]
-    runs-on: ${{ matrix.os }}
+    runs-on: windows-latest
     timeout-minutes: 25
     steps:
     - name: Checkout code
@@ -30,44 +27,29 @@ jobs:
         node-version: '20'
         cache: 'pnpm'
 
-    - name: Install pnpm (Windows)
-      if: matrix.os == 'windows-latest'
+    - name: Install pnpm
       run: |
         # Use PowerShell for reliable global install on Windows
         npm install -g pnpm --loglevel=error
         pnpm -v
       shell: pwsh
 
-    - name: Install pnpm (macOS)
-      if: matrix.os == 'macos-latest'
-      run: npm install -g pnpm
-
     - name: Install dependencies
       working-directory: frontend
       run: pnpm install --frozen-lockfile
 
     - name: Build project
-      run: |
-        echo "Building for ${{ matrix.os }}..."
-        if [[ "${{ matrix.os }}" == "windows-latest" ]]; then
-          bash scripts/build-windows.sh
-        else
-          bash scripts/build-macos.sh
-        fi
+      run: bash scripts/build-windows.sh
 
     - name: Zip binaries
       run: |
         cd bin
-        if [[ "${{ matrix.os }}" == "windows-latest" ]]; then
-          zip -r LoveCalc-Windows-${{ github.sha }}.zip *.exe
-        else
-          zip -r LoveCalc-MacOS-${{ github.sha }}.zip *.app
-        fi
+        zip -r LoveCalc-Windows-${{ github.sha }}.zip *.exe
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: binaries-${{ matrix.os }}
+        name: binaries-windows
         path: bin/*.zip
 
   create-release:
@@ -89,7 +71,7 @@ jobs:
           ## Build Information
           - Commit: [${{ github.sha }}](https://github.com/${{ github.repository }}/commit/${{ github.sha }})
           - Build date: ${{ steps.date.outputs.date }}
-          - Build runner: ${{ matrix.os }}
+          - Build runner: windows-latest
         files: |
           artifacts/**/*.zip
       env:
