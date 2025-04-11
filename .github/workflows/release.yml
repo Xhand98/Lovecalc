@@ -29,14 +29,14 @@ jobs:
       - name: Debug Wails Build
         run: |
           set -e
-          wails build -f -o build/app.exe || { echo "Build failed"; exit 1; }
+          wails build
           ls -l build/
           
       - name: Create Release
         id: create_release
         uses: softprops/action-gh-release@v1
         with:
-          files: build/app.exe
+          files: build/Test.exe
           name: Release ${{ github.sha }}
           tag_name: v${{ github.run_number }}
           body: |
