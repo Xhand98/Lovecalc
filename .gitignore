@@ -14,6 +14,9 @@ frontend/node_modules/
 
 # Logs
 *.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # Dependency directories
 node_modules/
@@ -22,3 +25,27 @@ vendor/
 # OS generated files
 .DS_Store
 Thumbs.db
+desktop.ini
+
+# Go specific
+*.out
+*.test
+*.mod
+*.sum
+*.exe
+
+# TypeScript specific
+*.tsbuildinfo
+
+# JavaScript/TypeScript IDE files
+.vscode/
+.idea/
+*.swp
+
+# HTML/CSS specific
+*.sass-cache/
+*.css.map
+*.html.map
+
+# Shell specific
+*.sh~
