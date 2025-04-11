@@ -28,7 +28,8 @@ jobs:
           
       - name: Debug Wails Build
         run: |
-          wails build -f -o build/app.exe
+          set -e
+          wails build -f -o build/app.exe || { echo "Build failed"; exit 1; }
           ls -l build/
           
       - name: Create Release
@@ -41,4 +42,4 @@ jobs:
           body: |
             Automated release for commit ${{ github.sha }}
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
