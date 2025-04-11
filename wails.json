@@ -1,0 +1,13 @@
+{
+  "name": "Test",
+  "outputfilename": "Test",
+  "frontend:install": "npm install",
+  "icon": "./build/appicon.png",
+  "frontend:build": "npm run build",
+  "frontend:dev:watcher": "npm run dev",
+  "frontend:dev:serverUrl": "auto",
+  "author": {
+    "name": "Hendrick",
+    "email": "hendrickherrera9@gmail.com"
+  }
+}
