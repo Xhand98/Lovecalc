@@ -7,16 +7,14 @@
 *.dylib
 *.app
 
-# Frontend development
+# Frontend artifacts
 /node_modules/
 /frontend/node_modules/
 /frontend/dist/
 /frontend/.parcel-cache/
 /frontend/.cache/
-*.js
-*.js.map
-*.css
-*.css.map
+/frontend/wailsjs/
+/frontend/package.json.md5
 
 # Go development
 *.test
@@ -50,4 +48,4 @@ debug
 
 # Wails specific
 project.db
-/frontend/wailsjs/
+*.md5
