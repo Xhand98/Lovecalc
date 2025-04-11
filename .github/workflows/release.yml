@@ -26,12 +26,11 @@ jobs:
       - name: Install Wails
         run: go install github.com/wailsapp/wails/v2/cmd/wails@latest
           
-      - name: Create required directories and files
+      - name: Use existing icon file
         run: |
           mkdir -p build
-          # Creating a simple icon file to satisfy the build requirement
-          curl -o build/appicon.png https://wails.io/img/logo-universal.png
-          
+          cp frontend/public/appicon build/appicon.png
+
       - name: Build project with Wails
         run: wails build -f -o build/app.exe
           
