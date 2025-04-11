@@ -30,7 +30,7 @@ jobs:
         id: create_release
         uses: softprops/action-gh-release@v1
         with:
-          files: build/Test.exe
+          files: build/bin/Test.exe
           name: Release ${{ github.sha }}
           tag_name: v${{ github.run_number }}
           body: |
