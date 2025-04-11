@@ -22,29 +22,35 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-      
-      - name: Install wails
-        run: |
-          go install github.com/wailsapp/wails/v2/cmd/wails@latest
           
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+          run_install: false
           
       - name: Install frontend dependencies
         run: |
-          wails build -f --platform windows/amd64 --output dist/app.exe
+          cd frontend
+          pnpm install
           
-     
-
-      - name: Create the release 
+      - name: Install Wails
+        run: go install github.com/wailsapp/wails/v2/cmd/wails@latest
+          
+      - name: Create build directory
+        run: mkdir -p build
+          
+      - name: Build project with Wails
+        run: wails build -f -o build/app.exe
+          
+      - name: Create Release
         id: create_release
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: v1.0.0
+          files: build/app.exe
+          name: Release ${{ github.sha }}
+          tag_name: v${{ github.run_number }}
           body: |
-            - Added new features
-            - Fixed bugs
-            - Improved performance
-          files: |
-            dist/app.exe
+            Automated release for commit ${{ github.sha }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_REPOSITORY: ${{ github.repository }}
