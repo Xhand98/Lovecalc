@@ -26,10 +26,10 @@ jobs:
       - name: Install Wails
         run: go install github.com/wailsapp/wails/v2/cmd/wails@latest
           
-
-
-      - name: Build project with Wails
-        run: wails build -f -o build/app.exe
+      - name: Debug Wails Build
+        run: |
+          wails build -f -o build/app.exe
+          ls -l build/
           
       - name: Create Release
         id: create_release
@@ -41,4 +41,4 @@ jobs:
           body: |
             Automated release for commit ${{ github.sha }}
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
