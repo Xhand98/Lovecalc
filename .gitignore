@@ -1,50 +1,53 @@
-# Binaries for programs and plugins
+# Build outputs
+/bin/
+/build/
 *.exe
 *.dll
 *.so
 *.dylib
+*.app
 
-# Build directories
-build/
-dist/
+# Frontend development
+/node_modules/
+/frontend/node_modules/
+/frontend/dist/
+/frontend/.parcel-cache/
+/frontend/.cache/
+*.js
+*.js.map
+*.css
+*.css.map
 
-# Wails specific
-frontend/dist/
-frontend/node_modules/
+# Go development
+*.test
+*.out
+/coverage/
+/vendor/
 
-# Logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# Environment files
+.env
+.env.local
+.env.development
+.env.production
+!.env.example
 
-# Dependency directories
-node_modules/
-vendor/
+# Editor/IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime*
 
-# OS generated files
+# OS metadata
 .DS_Store
 Thumbs.db
 desktop.ini
 
-# Go specific
-*.out
-*.test
-*.mod
-*.sum
+# Debug files
+*.log
+debug
+*.tmp
 
-# TypeScript specific
-*.tsbuildinfo
-
-# JavaScript/TypeScript IDE files
-.vscode/
-.idea/
-*.swp
-
-# HTML/CSS specific
-*.sass-cache/
-*.css.map
-*.html.map
-
-# Shell specific
-*.sh~
+# Wails specific
+project.db
+/frontend/wailsjs/
