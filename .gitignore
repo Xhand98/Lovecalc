@@ -1,0 +1,2 @@
+# node modules inside frontend dir
+./frontend/node_modules/*
