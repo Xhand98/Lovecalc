@@ -26,12 +26,6 @@ jobs:
       - name: Install Wails
         run: go install github.com/wailsapp/wails/v2/cmd/wails@latest
           
-      - name: Debug Wails Build
-        run: |
-          set -e
-          wails build
-          ls -l build/
-          
       - name: Create Release
         id: create_release
         uses: softprops/action-gh-release@v1
