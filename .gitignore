@@ -1,7 +1,9 @@
 # Build outputs
 /bin/
-/build/
-!/build/appicon.png
+/build/windows/
+/build/bin
+/build/README.md
+/build/darwin
 *.exe
 *.dll
 *.so
